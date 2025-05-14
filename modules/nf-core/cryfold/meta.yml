@@ -1,0 +1,48 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: cryfold
+## TODO nf-core: Add a description of the module and list keywords
+description: |
+  CryFold is a protein structure prediction tool that uses deep learning to predict protein structures from amino acid sequences.
+  This module supports AWS deployment with optimized resource allocation and S3 storage integration.
+keywords:
+  - protein structure prediction
+  - deep learning
+  - bioinformatics
+  - aws
+  - cloud computing
+tools:
+  - cryfold
+  - aws
+licence:
+  - MIT
+authors:
+  - "@aj"
+
+## TODO nf-core: Add a description of all of the variables used as input
+input:
+  - type: file
+    description: Input FASTA file containing protein sequence
+    pattern: "*.{fasta,fa}"
+
+## TODO nf-core: Add a description of all of the variables used as output
+output:
+  - type: file
+    description: Predicted protein structure in PDB format
+    pattern: "*.pdb"
+  - type: file
+    description: Log file containing prediction details
+    pattern: "*.log"
+  - type: file
+    description: YAML file containing software versions
+    pattern: "versions.yml"
+
+# AWS specific requirements
+aws:
+  instance_type: "c5.2xlarge"  # Recommended instance type
+  storage: "100 GB"  # Minimum storage requirement
+  memory: "32 GB"    # Minimum memory requirement
+  cpus: 8           # Minimum CPU requirement
+
+maintainers:
+  - "@ajeskey"
